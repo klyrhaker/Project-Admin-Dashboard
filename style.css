@@ -1,0 +1,328 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+li img {
+  width: 1.2rem;
+  aspect-ratio: 1/1;
+}
+a {
+  color: black;
+  text-decoration: none;
+  padding-left: 0.3rem;
+}
+
+body {
+  background-color: black;
+  display: grid;
+  border: 1px solid yellow;
+  width: 100%;
+  height: 100vh;
+  grid-template-columns: minmax(72px, 200px) minmax(350px, 3fr);
+  grid-template-rows: minmax(50px, 10rem) minmax(200px, 1fr);
+  grid-template-areas:
+    "sidebar top-bar"
+    "sidebar main";
+}
+
+.sidebar {
+  text-shadow: 1px 2px 2px yellow;
+  background-color: hsl(12 100% 50% / 0.8);
+  box-shadow: 3px 2px 2px yellow;
+  display: grid;
+  grid-area: sidebar;
+  width: 100%;
+  max-width: 300px;
+  grid-template-rows: minmax(50px, 10rem) repeat(3, minmax(100px, 1fr));
+  grid-template-columns: minmax(72px, 16rem);
+  grid-template-areas:
+    "logo-sidebar"
+    "navigation"
+    "navigation"
+    ".";
+}
+
+.primary-navigation {
+  grid-area: navigation;
+  height: 100%;
+}
+.primary-navigation ul {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  justify-items: start;
+  padding-left: 0.5rem;
+  grid-template-rows: repeat(11, 1fr);
+  grid-template-columns: minmax(50px, 1fr);
+  grid-template-areas:
+    "home"
+    "profile"
+    "messages"
+    "history"
+    "tasks"
+    "communities"
+    "."
+    "."
+    "settings"
+    "support"
+    "privacy";
+}
+.nav-home a {
+  padding-left: 0.5rem;
+}
+.nav-home {
+  grid-area: home;
+}
+.nav-profile {
+  grid-area: profile;
+}
+.nav-messages {
+  grid-area: messages;
+}
+.nav-history {
+  grid-area: history;
+}
+.nav-tasks {
+  grid-area: tasks;
+}
+.nav-communities {
+  grid-area: communities;
+}
+.nav-settings {
+  grid-area: settings;
+}
+.nav-support {
+  grid-area: support;
+}
+.nav-privacy {
+  grid-area: privacy;
+}
+.logo-sidebar {
+  grid-area: logo-sidebar;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.logo-sidebar img {
+  justify-self: end;
+  width: 2rem;
+}
+
+.top-bar {
+  background-color: hsl(0 0% 0%);
+  border-left: 3px solid yellow;
+  display: grid;
+  grid-area: top-bar;
+  grid-template-columns: minmax(100px, 1.5fr) minmax(50px, 1fr);
+  grid-template-rows: repeat(2, minmax(50px, 1fr));
+  grid-template-areas:
+    "search secondary-logo"
+    "primary-logo buttons";
+}
+.search {
+  grid-area: search;
+  align-self: center;
+}
+.search img {
+  width: 1.2rem;
+  height: auto;
+}
+.primary-logo {
+  grid-area: primary-logo;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "logo-svg hi"
+    "logo-svg logo";
+}
+.primary-logo p {
+  grid-area: hi;
+  color: rgb(255, 51, 0);
+  text-shadow: 1px 2px 2px yellow;
+}
+.primary-logo h1 {
+  grid-area: logo;
+  color: rgb(255, 51, 0);
+  text-shadow: 1px 2px 2px yellow;
+}
+.primary-logo-svg {
+  max-width: 3rem;
+  width: 100%;
+  height: auto;
+  grid-area: logo-svg;
+  object-fit: cover;
+  justify-self: end;
+  align-self: center;
+}
+
+.primary-buttons {
+  grid-area: buttons;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.primary-buttons button {
+  width: 30%;
+  height: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  background-image:
+    radial-gradient(circle at 10% 10%, red, transparent),
+    radial-gradient(yellow, transparent),
+    radial-gradient(rgb(255, 255, 13), transparent),
+    radial-gradient(orange, transparent);
+}
+.secondary-logo {
+  justify-self: end;
+  align-self: center;
+  padding-right: 5%;
+  grid-area: secondary-logo;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "secondary-svg second-logo"
+    "secondary-svg second-logo";
+}
+.secondary-logo-svg {
+  width: 100%;
+  max-width: 2rem;
+  height: auto;
+  justify-self: end;
+  object-fit: cover;
+  align-self: center;
+  grid-area: secondary-svg;
+}
+.secondary-logo h1 {
+  color: rgb(255, 51, 0);
+  text-shadow: 1px 2px 2px yellow;
+  align-self: center;
+  font-size: 1.3rem;
+  grid-area: second-logo;
+}
+input {
+  border-radius: 10px;
+  width: 80%;
+  border: 1px solid red;
+}
+
+main {
+  display: grid;
+
+  grid-area: main;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "cards comments";
+}
+.cards {
+  border-bottom: 3px solid yellow;
+  border-top: 3px solid yellow;
+  border-left: 3px solid yellow;
+  padding: 1rem;
+  background-color: white;
+  grid-area: cards;
+  align-self: start;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  grid-template-rows: repeat(3, minmax(100px, 1fr));
+  grid-template-areas:
+    "item1 item2"
+    "item3 item4"
+    "item5 item6";
+}
+.items {
+  padding: 1rem;
+  text-shadow: 1px 2px 2px yellow;
+  background-color: hsl(12 100% 50% / 0.8);
+  border-left: 5px solid rgb(253, 79, 22);
+  font-size: 0.7rem;
+  display: grid;
+}
+.items img {
+  width: 100%;
+  max-width: 1.2rem;
+  aspect-ratio: 1/1;
+}
+.item-img {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+.item1 {
+  grid-area: item1;
+}
+.item2 {
+  grid-area: item2;
+}
+.item3 {
+  grid-area: item3;
+}
+.item4 {
+  grid-area: item4;
+}
+.item5 {
+  grid-area: item5;
+}
+.item6 {
+  grid-area: item6;
+}
+
+.comments {
+  border-bottom: 3px solid yellow;
+  border-top: 3px solid yellow;
+  border-right: 3px solid yellow;
+  padding: 1rem;
+  background-color: white;
+  align-self: stretch;
+  font-size: 0.7rem;
+  grid-area: comments;
+  display: grid;
+
+  grid-template-rows: repeat(2, minmax(100px, 1fr));
+}
+.com1 {
+  align-self: start;
+  background-color: hsl(12 100% 50% / 0.8);
+  text-shadow: 1px 2px 2px yellow;
+  display: grid;
+  grid-template-rows: repeat3, (minmax(50px, 1fr));
+}
+.text {
+  width: 90%;
+
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem;
+  border-bottom: 2px solid hsl(0 0% 10%);
+}
+.text3 {
+  border: none;
+}
+.com2 {
+  align-self: end;
+  text-shadow: 1px 2px 2px yellow;
+  background-color: hsl(12 100% 50% / 0.8);
+  display: grid;
+  grid-template-rows: repeat(2, minmax(50px, 1fr));
+}
+.com2 img {
+  width: 100%;
+  max-width: 1.7rem;
+}
+.temo {
+  display: flex;
+  align-items: center;
+}
+.nik {
+  display: flex;
+  align-items: center;
+}
+.ktkt {
+  display: flex;
+  align-items: center;
+}
